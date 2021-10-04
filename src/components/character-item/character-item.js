@@ -1,14 +1,17 @@
 import './character-item.css';
 
-const CharacterItem = ({image, name, species, location, onPersonHandler}) => {
+const CharacterItem = ({image, name, onPersonHandler}) => {
+    const onClick = (evt) => {
+        evt.preventDefault();
+        onPersonHandler();
+    };
+
     return (
-        <div onClick={onPersonHandler} className="col-lg-3 col-md-6 col-sm-12 mb-4">
-            <div className="card" style={{ minWidth: "200px" }}>
-                <img className="card-img-top" src={image} alt="character" />
-                <div className="card-body">
-                    <h5 className="card-title">{name}</h5>
-                    <p className="card-text">Species: {species}</p>
-                    <p className="card-text">Location: {location.name}</p>
+        <div onClick={onClick} className="col-lg-3 col-md-6 col-sm-12 mb-4">
+            <div className="character-item">
+                <img className="character-item__img card-img-bottom" src={image} alt="character" />
+                <div className="character-item__content">
+                    <h5 className="character-item__title">{name}</h5>
                 </div>
             </div>
         </div>

@@ -1,0 +1,21 @@
+
+.character-item {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(36, 40, 47);
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.12);
+    border-radius: .25rem;
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.character-item__content {
+    padding: 1rem 1rem;
+}
+
+.character-item__title {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}

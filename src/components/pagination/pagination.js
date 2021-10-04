@@ -66,7 +66,7 @@ const Pagination = ({pages, currentPage, setCurrentPage}) => {
     }
    
     return (
-        <nav aria-label="Charackter paginations">
+        <nav className="container" aria-label="Charackter paginations">
             <ul className="pagination">
                 <li className="page-item">
                     <button className="page-link" onClick = {onPrevBtnHandler}>Previous</button>

@@ -1,47 +1,47 @@
-import './filter.css';
+import Input from "../input";
+import Select from "../select";
+import "./filter.css";
 
-const Filter = ({filters = {}, onFilterChange}) => {
-    return (
-        <div className="row">
-            <div className="col">
-                <input value={filters.name} onChange = {(e) => {
-                    onFilterChange('name', e.target.value)
-                }} type='text'/>
-            </div>
-            <div className="col">
-                <select className="form-select" onChange = {(e) => {
-                    onFilterChange('status', e.target.value)
-                    }} defaultValue={''} aria-label="Default select example">
-                    <option value=""></option>
-                    <option value="alive">alive</option>
-                    <option value="dead">dead </option>
-                    <option value="unknown">unknown</option>
-                </select>
-            </div>
-            <div className="col">
-                <input value={filters.species} onChange = {(e) => {
-                    onFilterChange('species', e.target.value)
-                }} type='text'/>
-            </div>
-            <div className="col">
-                <input value={filters.type} onChange = {(e) => {
-                    onFilterChange('type', e.target.value)
-                }} type='text'/>
-            </div>
-            <div className="col">
-                <select className="form-select" onChange = {(e) => {
-                    onFilterChange('gender', e.target.value)
-                    }} defaultValue={''} aria-label="Default select example">
-                    <option value=""></option>
-                    <option value="female">female</option>
-                    <option value="male">male </option>
-                    <option value="genderless">genderless</option>
-                    <option value="unknown">unknown</option>
-                </select>
+const Filter = ({ filters = {}, onFilterChange }) => {
+  return (
+    <div className="container mb-5">
+      <h5>Filters</h5>
+      <Input
+        value={filters.name}
+        name="name"
+        onFilterChange={onFilterChange}
+        type="text"
+      />
+      <Select
+        label="Choose status:"
+        name="status"
+        onFilterChange={onFilterChange}
+        values={["alive", "dead", "unknown"]}
+      />
+      <Input
+        value={filters.species}
+        label="Species:"
+        name="species"
+        onFilterChange={onFilterChange}
+        type="text"
+      />
 
-            </div>
-        </div>
-    )
-}
+      <Input
+        value={filters.type}
+        label="Type:"
+        name="type"
+        onFilterChange={onFilterChange}
+        type="text"
+      />
+
+      <Select
+        label="Gender:"
+        name="gender"
+        onFilterChange={onFilterChange}
+        values={["female", "male", "genderless", "unknown"]}
+      />
+    </div>
+  );
+};
 
 export default Filter;

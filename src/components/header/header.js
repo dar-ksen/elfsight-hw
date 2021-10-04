@@ -2,7 +2,7 @@ import './header.css'
 
 const Header = ({title, count =  0, pages = 0}) => {
     return (
-        <header>
+        <header className="mb-5">
             <div className="navbar navbar-dark bg-dark">
                 <div className="container">
                     <a className="navbar-brand text-uppercase" href="/">

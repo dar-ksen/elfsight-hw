@@ -5,6 +5,8 @@ import Header from "../header";
 import Pagination from "../pagination";
 import CharacterModal from "../character-modal";
 import { useModali } from "modali";
+import useDebounce from "../../hooks/useDebounce";
+
 
 import "./app.css";
 import Boundry from "../boundary/";
@@ -22,6 +24,9 @@ function App() {
     type: "",
     gender: "",
   });
+
+  const debounceFilters = useDebounce(filters, 500);
+  
 
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -73,8 +78,8 @@ function App() {
     };
 
     setLoading(true);
-    fetchCharacters(urlResurse, filters, currentPage);
-  }, [filters, currentPage]);
+    fetchCharacters(urlResurse, debounceFilters, currentPage);
+  }, [debounceFilters, currentPage]);
 
   return (
     <div className="app">

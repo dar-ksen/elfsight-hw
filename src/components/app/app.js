@@ -4,6 +4,7 @@ import Filter from "../filter";
 import Header from "../header";
 import Pagination from "../pagination";
 import CharacterModal from "../character-modal";
+import { useModali } from 'modali';
 
 import "./App.css";
 
@@ -21,8 +22,13 @@ function App() {
     });
 
     const [currentPage, setCurrentPage] = useState(1);
-    const [isOpenModal, setIsOpenModal] = useState(false);
-    const [activePerson, setActivePerson] = useState(1);
+
+    const [modal, toggleModal] = useModali({
+      animated: true,
+      title: 'Person detail',
+    });
+
+    const [activePerson, setActivePerson] = useState({});
 
     const onFilterChange = (key, value) => {
         setCurrentPage(1);
@@ -31,7 +37,7 @@ function App() {
     
     const onPersonHandler = (id) => {
         setActivePerson(id);
-        setIsOpenModal(true)
+        toggleModal()
     }
 
     useEffect(() => {
@@ -63,6 +69,7 @@ function App() {
         fetchCharacters(urlResurse, filters, currentPage)
     }, [filters, currentPage]);
 
+
     // if (error) {
     //     return <div>error</div>
     // };
@@ -75,6 +82,8 @@ function App() {
                 <CharacterList characters = {data.results} onPersonHandler = {onPersonHandler} />
                 <Pagination currentPage = {currentPage} setCurrentPage={setCurrentPage} {...data.info}/>
             </div>
+
+            <CharacterModal settings={modal}  activePerson={activePerson}/>
         </>
     );
 }

@@ -7,7 +7,7 @@ const Pagination = ({pages, currentPage, setCurrentPage}) => {
     let pass = false;
 
     for (let i = 1; i <=pages; i ++) {
-        if (i >= (currentPage - 1) && i <= (currentPage + 1) || i === 1 || i == pages) {
+        if ((i >= (currentPage - 1) && i <= (currentPage + 1)) || (i === 1 || i === pages)) {
             pagesArray.push({
                 index: i,
                 isActive: i === currentPage,
@@ -47,14 +47,14 @@ const Pagination = ({pages, currentPage, setCurrentPage}) => {
             <Fragment key={index}>
                 {pass 
                     ? <li className="page-item">
-                        <a className="page-link" role="button">
+                        <span className="page-link">
                             <span aria-hidden="true">…</span>
-                        </a>
+                        </span>
                         </li>
                     : ''
                 }
                 <li className={className}>
-                    <a className="page-link" onClick = { (evt) => onBtnHandler(evt, index)} role="button" >{index}</a>
+                    <button className="page-link" onClick = { (evt) => onBtnHandler(evt, index)}>{index}</button>
                 </li>
             </Fragment>
         )
@@ -69,11 +69,11 @@ const Pagination = ({pages, currentPage, setCurrentPage}) => {
         <nav aria-label="Charackter paginations">
             <ul className="pagination">
                 <li className="page-item">
-                    <a className="page-link" onClick = {onPrevBtnHandler} href="#">Previous</a>
+                    <button className="page-link" onClick = {onPrevBtnHandler}>Previous</button>
                 </li>
                 {paginations}
                 <li className="page-item">
-                    <a className="page-link"  onClick = {onNextBtnHandler} href="#">Next</a>
+                    <button className="page-link"  onClick = {onNextBtnHandler}>Next</button>
                 </li>
             </ul>
         </nav>

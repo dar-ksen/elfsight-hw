@@ -6,6 +6,7 @@ import Pagination from "../pagination";
 import CharacterModal from "../character-modal";
 import Boundry from "../boundary";
 import Footer from "../footer";
+import CharacterService from "../../service/character-service";
 
 import { useModali } from "modali";
 
@@ -13,9 +14,9 @@ import useDebounce from "../../hooks/useDebounce";
 
 import "./app.css";
 
-function App() {
-  const urlResurse = "https://rickandmortyapi.com/api/character";
+const characterService = new CharacterService();
 
+function App() {
   const [data, setData] = useState({});
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -49,37 +50,22 @@ function App() {
   };
 
   useEffect(() => {
-    const fetchCharacters = (urlResurse, filters = {}, currentPage = 1) => {
-      let filterAddres = `/?page=${currentPage}`;
-      for (const filter in filters) {
-        if (filters[filter] !== "") {
-          filterAddres += `&${filter}=${filters[filter]}`;
-        }
-      }
-
-      const url = `${urlResurse}${filterAddres}`;
-
-      fetch(url)
-        .then((res) => {
-          if (!res.ok) {
-            throw Error(`is not ok: ` + res.status);
-          }
-          return res.json();
-        })
-        .then((data) => {
-          setData(data);
-          setError(false);
-          setLoading(false);
-        })
-        .catch((error) => {
-          setError(true);
-          setLoading(false);
-          setData({});
-        });
-    };
-
     setLoading(true);
-    fetchCharacters(urlResurse, debounceFilters, currentPage);
+    characterService
+      .getFiltersCharacter(debounceFilters, currentPage)
+      .then((data) => {
+        const checkAnswer = characterService.getFiltersCharacterUrl(debounceFilters);
+        if (data.info.next === null || data.info.next.includes(checkAnswer)) {
+          setData(data);
+        } else {
+          setData({});
+        }
+        setLoading(false);
+    })
+    .catch((error) => {
+      console.error(error);
+      setError(true);
+    });
   }, [debounceFilters, currentPage]);
 
   return (
@@ -90,7 +76,7 @@ function App() {
           <Filter onFilterChange={onFilterChange} filters={filters} />
         </aside>
         <main className="main">
-          <Boundry hasError={error} isLoading={loading}>
+          <Boundry hasError={error} isLoading={loading} isFound={ Object.keys(data).length !== 0 }>
             <CharacterList
               characters={data.results}
               onPersonHandler={onPersonHandler}

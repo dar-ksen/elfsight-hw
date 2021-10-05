@@ -1,22 +1,25 @@
 import React from 'react';
+import PropTypes from "prop-types";
 
 import './error-indicator.css';
 import icon from './error.png';
 
-const ErrorIndicator = () => {
+const ErrorIndicator = ({children}) => {
   return (
     <div className="error-indicator">
-      
-      <span className="boom">BOOM!</span>
-      <span>
-        something has gone terribly wrong
-      </span>
-      <span>
-        (but we already sent Morty to fix it)
-      </span>
+
+      {children}
       <img src={icon} alt="error icon"/>
     </div>
   );
+};
+
+ErrorIndicator.propTypes = {
+  children: PropTypes.node,
+};
+
+ErrorIndicator.defaultProps = {
+  children: null,
 };
 
 export default ErrorIndicator;

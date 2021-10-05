@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 const Boundry = ({ hasError, isLoading, isFound, children }) => {
 
-  if (hasError === '404') {
+  if (hasError === 404) {
     return (
       <ErrorIndicator>
         <span className="boom">404</span>

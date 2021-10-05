@@ -4,20 +4,33 @@ import { capitalizeFirstLetter } from "../../utils";
 
 import "./input.css";
 
-const Input = ({ name, containerClass, className, text, onFilterChange, ...attrs }) => {
+const Input = ({
+  name,
+  containerClass,
+  className,
+  text,
+  onFilterChange,
+  ...attrs
+}) => {
   const classes = classNames("form-control", className);
   const classesContainer = classNames("mb-3", containerClass);
   const label = capitalizeFirstLetter(name);
-  const onChange =(e) => {
+  const onChange = (e) => {
     onFilterChange(name, e.target.value);
-  }
+  };
 
   return (
     <div className={classesContainer}>
       <label className="form-label" htmlFor={name}>
         {label}:
       </label>
-      <input onChange={onChange} name={name} id={name} className={classes} {...attrs} />
+      <input
+        onChange={onChange}
+        name={name}
+        id={name}
+        className={classes}
+        {...attrs}
+      />
       {text && (
         <div id="emailHelp" className="form-text">
           {text}

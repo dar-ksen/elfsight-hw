@@ -4,13 +4,14 @@ import Filter from "../filter";
 import Header from "../header";
 import Pagination from "../pagination";
 import CharacterModal from "../character-modal";
-import { useModali } from "modali";
-import useDebounce from "../../hooks/useDebounce";
-
-
-import "./app.css";
 import Boundry from "../boundary";
 import Footer from "../footer";
+
+import { useModali } from "modali";
+
+import useDebounce from "../../hooks/useDebounce";
+
+import "./app.css";
 
 function App() {
   const urlResurse = "https://rickandmortyapi.com/api/character";
@@ -27,7 +28,6 @@ function App() {
   });
 
   const debounceFilters = useDebounce(filters, 500);
-  
 
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -103,7 +103,7 @@ function App() {
           </Boundry>
         </main>
       </div>
-      <Footer/>
+      <Footer />
       <CharacterModal settings={modal} activePerson={activePerson} />
     </div>
   );

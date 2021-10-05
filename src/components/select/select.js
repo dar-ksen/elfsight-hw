@@ -17,11 +17,11 @@ const Select = ({
 }) => {
   const classes = classNames("form-select", className);
   const classesContainer = classNames("mb-3", containerClass);
-  const defaultValueLabel = 'Select for ' + name;
+  const defaultValueLabel = "Select for " + name;
 
-  const onChange =(e) => {
+  const onChange = (e) => {
     onFilterChange(name, e.target.value);
-  }
+  };
 
   return (
     <div className={classesContainer}>

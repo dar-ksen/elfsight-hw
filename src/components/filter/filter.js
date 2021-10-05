@@ -1,8 +1,10 @@
 import Input from "../input";
 import Select from "../select";
+import PropTypes from "prop-types";
+
 import "./filter.css";
 
-const Filter = ({ filters = {}, onFilterChange }) => {
+const Filter = ({ filters, onFilterChange }) => {
   return (
     <div className="filter container mb-5">
       <h5 className="filter__title">Filters</h5>
@@ -49,6 +51,16 @@ const Filter = ({ filters = {}, onFilterChange }) => {
       </div>
     </div>
   );
+};
+
+Filter.propTypes = {
+  filters: PropTypes.object,
+  onFilterChange: PropTypes.func,
+};
+
+Filter.defaultProps = {
+  filters: {},
+  onFilterChange: () => {},
 };
 
 export default Filter;

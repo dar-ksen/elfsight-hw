@@ -1,5 +1,7 @@
-import "./character-modal.css";
 import Modali from "modali";
+import PropTypes from "prop-types";
+
+import "./character-modal.css";
 
 const CharacterModal = ({ settings, activePerson }) => {
 
@@ -25,6 +27,16 @@ const CharacterModal = ({ settings, activePerson }) => {
       </div>
     </Modali.Modal>
   );
+};
+
+CharacterModal.propTypes = {
+  settings: PropTypes.object,
+  activePerson: PropTypes.object,
+};
+
+CharacterModal.defaultProps = {
+  settings: {},
+  activePerson: undefined,
 };
 
 export default CharacterModal;

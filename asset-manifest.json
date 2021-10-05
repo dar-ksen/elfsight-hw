@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/elfsight-hw/static/css/main.ee824ccb.chunk.css",
+    "main.js": "/elfsight-hw/static/js/main.5e8caec1.chunk.js",
+    "main.js.map": "/elfsight-hw/static/js/main.5e8caec1.chunk.js.map",
+    "runtime-main.js": "/elfsight-hw/static/js/runtime-main.f9e76c2c.js",
+    "runtime-main.js.map": "/elfsight-hw/static/js/runtime-main.f9e76c2c.js.map",
+    "static/css/2.a3c3eec3.chunk.css": "/elfsight-hw/static/css/2.a3c3eec3.chunk.css",
+    "static/js/2.8f3f3b81.chunk.js": "/elfsight-hw/static/js/2.8f3f3b81.chunk.js",
+    "static/js/2.8f3f3b81.chunk.js.map": "/elfsight-hw/static/js/2.8f3f3b81.chunk.js.map",
+    "index.html": "/elfsight-hw/index.html",
+    "static/css/2.a3c3eec3.chunk.css.map": "/elfsight-hw/static/css/2.a3c3eec3.chunk.css.map",
+    "static/css/main.ee824ccb.chunk.css.map": "/elfsight-hw/static/css/main.ee824ccb.chunk.css.map",
+    "static/js/2.8f3f3b81.chunk.js.LICENSE.txt": "/elfsight-hw/static/js/2.8f3f3b81.chunk.js.LICENSE.txt",
+    "static/media/error.9e2eae13.png": "/elfsight-hw/static/media/error.9e2eae13.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.f9e76c2c.js",
+    "static/css/2.a3c3eec3.chunk.css",
+    "static/js/2.8f3f3b81.chunk.js",
+    "static/css/main.ee824ccb.chunk.css",
+    "static/js/main.5e8caec1.chunk.js"
+  ]
+}

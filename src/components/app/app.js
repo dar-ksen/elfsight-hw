@@ -60,6 +60,7 @@ function App() {
     })
     .catch((error) => {
       console.error(error);
+      setData({});
       setError(error.status);
     });
   }, [debounceFilters, currentPage]);

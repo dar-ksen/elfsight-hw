@@ -2,7 +2,7 @@ import ErrorIndicator from "../error-indicator";
 import Spinner from "../spinner/spinner";
 import PropTypes from "prop-types";
 
-const Boundry = ({ hasError, isLoading, isFound, children }) => {
+const Boundry = ({ hasError, isLoading, children }) => {
 
   if (hasError === 404) {
     return (
@@ -45,14 +45,12 @@ const Boundry = ({ hasError, isLoading, isFound, children }) => {
 Boundry.propTypes = {
   hasError: PropTypes.bool,
   isLoading: PropTypes.bool,
-  isFound: PropTypes.bool,
   children: PropTypes.node,
 };
 
 Boundry.defaultProps = {
   hasError: false,
   isLoading: true,
-  isFound: true,
   children: null,
 };
 

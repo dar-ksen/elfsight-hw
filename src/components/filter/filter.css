@@ -1,0 +1,21 @@
+.filter__content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-right: -1rem;
+}
+
+.filter__item {
+    margin-right: 1rem;
+    flex: 1 1 auto;
+}
+
+@media (min-width: 992px) {
+    .filter__content {
+        display: block;
+        margin-right: 0;
+    }
+    .filter__item {
+        margin-right: 0;
+    }
+}

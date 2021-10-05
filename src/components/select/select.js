@@ -7,6 +7,7 @@ import "./select.css";
 const Select = ({
   name,
   className,
+  containerClass,
   defaultValue,
   values,
   label,
@@ -15,6 +16,7 @@ const Select = ({
   ...attrs
 }) => {
   const classes = classNames("form-select", className);
+  const classesContainer = classNames("mb-3", containerClass);
   const defaultValueLabel = 'Select for ' + name;
 
   const onChange =(e) => {
@@ -22,7 +24,7 @@ const Select = ({
   }
 
   return (
-    <div className="mb-3">
+    <div className={classesContainer}>
       {label && (
         <label className="form-label" htmlFor={name}>
           {label}
@@ -51,6 +53,7 @@ const Select = ({
 
 Select.propTypes = {
   name: PropTypes.string.isRequired,
+  containerClass: PropTypes.string,
   className: PropTypes.string,
   defaultValue: PropTypes.string,
   values: PropTypes.arrayOf(PropTypes.string),
@@ -59,6 +62,7 @@ Select.propTypes = {
 };
 
 Select.defaultProps = {
+  containerClass: "",
   className: "",
   defaultValue: "",
   values: [],

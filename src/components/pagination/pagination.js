@@ -1,4 +1,5 @@
 import { Fragment } from 'react';
+import PropTypes from "prop-types";
 
 import './pagination.css'
 
@@ -69,15 +70,28 @@ const Pagination = ({pages, currentPage, setCurrentPage}) => {
         <nav className="container" aria-label="Charackter paginations">
             <ul className="pagination">
                 <li className="page-item">
-                    <button className="page-link" onClick = {onPrevBtnHandler}>Previous</button>
+                    <button className="page-link" disabled={ currentPage === 1 ? 'disabled' : null}  onClick = {onPrevBtnHandler}>Previous</button>
                 </li>
                 {paginations}
                 <li className="page-item">
-                    <button className="page-link"  onClick = {onNextBtnHandler}>Next</button>
+                    <button className="page-link" disabled={ currentPage === pages ? 'disabled' : null}  onClick = {onNextBtnHandler}>Next</button>
                 </li>
             </ul>
         </nav>
     )
 }
+
+Pagination.propTypes = {
+    pages: PropTypes.number,
+    currentPage: PropTypes.number,
+    setCurrentPage: PropTypes.func,
+  };
+  
+  Pagination.defaultProps = {
+    pages: 1,
+    currentPage: 1,
+    setCurrentPage: () => {},
+
+  };
 
 export default Pagination;

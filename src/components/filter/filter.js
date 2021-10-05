@@ -4,42 +4,49 @@ import "./filter.css";
 
 const Filter = ({ filters = {}, onFilterChange }) => {
   return (
-    <div className="container mb-5">
-      <h5>Filters</h5>
-      <Input
-        value={filters.name}
-        name="name"
-        onFilterChange={onFilterChange}
-        type="text"
-      />
-      <Select
-        label="Choose status:"
-        name="status"
-        onFilterChange={onFilterChange}
-        values={["alive", "dead", "unknown"]}
-      />
-      <Input
-        value={filters.species}
-        label="Species:"
-        name="species"
-        onFilterChange={onFilterChange}
-        type="text"
-      />
+    <div className="filter container mb-5">
+      <h5 className="filter__title">Filters</h5>
+      <div className="filter__content">
+        <Input
+          containerClass="filter__item"
+          value={filters.name}
+          name="name"
+          onFilterChange={onFilterChange}
+          type="text"
+        />
+        <Select
+          containerClass="filter__item"
+          label="Choose status:"
+          name="status"
+          onFilterChange={onFilterChange}
+          values={["alive", "dead", "unknown"]}
+        />
+        <Input
+          containerClass="filter__item"
+          value={filters.species}
+          label="Species:"
+          name="species"
+          onFilterChange={onFilterChange}
+          type="text"
+        />
 
-      <Input
-        value={filters.type}
-        label="Type:"
-        name="type"
-        onFilterChange={onFilterChange}
-        type="text"
-      />
+        <Input
+          containerClass="filter__item"
+          value={filters.type}
+          label="Type:"
+          name="type"
+          onFilterChange={onFilterChange}
+          type="text"
+        />
 
-      <Select
-        label="Gender:"
-        name="gender"
-        onFilterChange={onFilterChange}
-        values={["female", "male", "genderless", "unknown"]}
-      />
+        <Select
+          containerClass="filter__item"
+          label="Gender:"
+          name="gender"
+          onFilterChange={onFilterChange}
+          values={["female", "male", "genderless", "unknown"]}
+        />
+      </div>
     </div>
   );
 };

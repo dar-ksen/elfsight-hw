@@ -9,7 +9,8 @@ import useDebounce from "../../hooks/useDebounce";
 
 
 import "./app.css";
-import Boundry from "../boundary/";
+import Boundry from "../boundary";
+import Footer from "../footer";
 
 function App() {
   const urlResurse = "https://rickandmortyapi.com/api/character";
@@ -102,6 +103,7 @@ function App() {
           </Boundry>
         </main>
       </div>
+      <Footer/>
       <CharacterModal settings={modal} activePerson={activePerson} />
     </div>
   );

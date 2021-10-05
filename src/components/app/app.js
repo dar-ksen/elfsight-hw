@@ -18,7 +18,7 @@ const characterService = new CharacterService();
 
 function App() {
   const [data, setData] = useState({});
-  const [error, setError] = useState(false);
+  const [error, setError] = useState('');
   const [loading, setLoading] = useState(true);
   const [filters, setFilters] = useState({
     name: "",
@@ -54,18 +54,13 @@ function App() {
     characterService
       .getFiltersCharacter(debounceFilters, currentPage)
       .then((data) => {
-        const checkAnswer = characterService.getFiltersCharacterUrl(debounceFilters);
-        if (data.info.next === null || data.info.next.includes(checkAnswer)) {
-          setData(data);
-        } else {
-          setData({});
-        }
+        setData(data);
         setLoading(false);
-        setError(false);
+        setError('');
     })
     .catch((error) => {
       console.error(error);
-      setError(true);
+      setError(error.status);
     });
   }, [debounceFilters, currentPage]);
 
@@ -77,7 +72,7 @@ function App() {
           <Filter onFilterChange={onFilterChange} filters={filters} />
         </aside>
         <main className="main">
-          <Boundry hasError={error} isLoading={loading} isFound={ Object.keys(data).length !== 0 }>
+          <Boundry hasError={error} isLoading={loading}>
             <CharacterList
               characters={data.results}
               onPersonHandler={onPersonHandler}

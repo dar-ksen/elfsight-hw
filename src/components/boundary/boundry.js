@@ -3,6 +3,22 @@ import Spinner from "../spinner/spinner";
 import PropTypes from "prop-types";
 
 const Boundry = ({ hasError, isLoading, isFound, children }) => {
+
+  if (hasError === '404') {
+    return (
+      <ErrorIndicator>
+        <span className="boom">404</span>
+        <span>
+          No answers found for the specified filter
+        </span>
+        <span>
+          Try to change your request
+        </span>
+
+      </ErrorIndicator>
+    );
+  }
+
   if (hasError) {
     return (
       <ErrorIndicator>
@@ -21,21 +37,6 @@ const Boundry = ({ hasError, isLoading, isFound, children }) => {
   
   if (isLoading) {
     return <Spinner />;
-  }
-
-  if (!isFound) {
-    return (
-      <ErrorIndicator>
-        <span className="boom">404</span>
-        <span>
-          No answers found for the specified filter
-        </span>
-        <span>
-          Try to change your request
-        </span>
-
-      </ErrorIndicator>
-    );
   }
   
   return children;

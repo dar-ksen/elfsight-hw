@@ -43,13 +43,13 @@ const Boundry = ({ hasError, isLoading, children }) => {
 };
 
 Boundry.propTypes = {
-  hasError: PropTypes.bool,
+  hasError: PropTypes.string,
   isLoading: PropTypes.bool,
   children: PropTypes.node,
 };
 
 Boundry.defaultProps = {
-  hasError: false,
+  hasError: '',
   isLoading: true,
   children: null,
 };

@@ -1,4 +1,3 @@
-import { Fragment } from "react";
 import PropTypes from "prop-types";
 import CharacterItem from "../character-item";
 import "./character-list.css";
@@ -7,12 +6,10 @@ const CharacterList = ({ characters = [], onPersonHandler }) => {
   const list = characters.map((character) => {
     const { id, ...props } = character;
     return (
-      <Fragment key={id}>
-        <CharacterItem
-          {...props}
-          onPersonHandler={() => onPersonHandler(character)}
-        />
-      </Fragment>
+      <CharacterItem key={id}
+        {...props}
+        onPersonHandler={() => onPersonHandler(character)}
+      />
     );
   });
 
